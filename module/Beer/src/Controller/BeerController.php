@@ -58,13 +58,13 @@ class BeerController extends AbstractActionController
         // an exception if the album is not found, which should result
         // in redirecting to the landing page.
         try {
-            $album = $this->table->getBeer($id);
+            $beer = $this->table->getBeer($id);
         } catch (\Exception $e) {
             return $this->redirect()->toRoute('beer', ['action' => 'index']);
         }
 
         $form = new BeerForm();
-        $form->bind($album);
+        $form->bind($beer);
         $form->get('submit')->setAttribute('value', 'Edit');
 
         $request = $this->getRequest();
