@@ -1,0 +1,42 @@
+<?php
+
+
+$title = 'Beer Details';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('beer', ['action' => 'add']) ?>">Add new Beer</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Name</th>
+    <th>Brawery ID</th>
+    <th>Cat ID</th>
+    <th>Details</th>
+    <th>Description</th>
+    <th>FilePath</th>
+    <th>Action</th>
+</tr>
+<?php foreach ($beers as $beer) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($beer->name) ?></td>
+        <td><?= $this->escapeHtml($beer->brewery_id) ?></td>
+        <td><?= $this->escapeHtml($beer->cat_id) ?></td>
+        <td>
+            <p>ABV : <?= $this->escapeHtml($beer->abv) ?></p>
+            <p>IBU : <?= $this->escapeHtml($beer->ibu) ?></p>
+            <p>SRM : <?= $this->escapeHtml($beer->srm) ?></p>
+            <p>UPC : <?= $this->escapeHtml($beer->abv) ?></p>
+            <p>Style Id : <?= $this->escapeHtml($beer->style_id) ?></p>
+        </td>
+        <td><?= $this->escapeHtml($beer->descript) ?></td>
+        <td><?= $this->escapeHtml($beer->filepath) ?></td>
+        <td>
+            <a href="<?= $this->url('beer', ['action' => 'edit', 'id' => $beer->id]) ?>">Edit</a>
+            <a href="<?= $this->url('beer', ['action' => 'delete', 'id' => $beer->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>
